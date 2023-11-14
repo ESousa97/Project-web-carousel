@@ -1,0 +1,72 @@
+/* Estilos gerais */
+body {
+  background-color: #111;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Removendo a barra de rolagem */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cards-container {
+  overflow: none;
+  position: sticky;
+  display: flex;
+  justify-content: center; /* Centralizar os cards horizontalmente */
+  align-items: center; /* Centralizar os cards verticalmente */
+  cursor: grab; /* Adicionado aqui para permitir arrastar no contêiner */
+}
+
+.slick-slider {
+  display: flex;
+  width: 100vw;
+  max-width: 1000px;
+  margin: 0 auto;
+  transition: transform 0.9s ease-out;
+  user-select: none;
+}
+
+.icon-cards__item {
+  flex: 0 0 calc(50% - -16px);
+  height: 500px;
+  background-color: #333;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 27px;
+  font-size: 2rem;
+  transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
+}
+
+.icon-cards__item.active {
+  transform: scale(1) translateY(-50%) translateX(-50%);
+  position: center;
+  z-index: 2;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+}
+
+.icon-cards__item:not(.active):hover {
+  transform: scale(1.2);
+}
+
+/* Estilos para dispositivos menores (mobile) */
+@media only screen and (max-width: 1337px) {
+  .slick-slider {
+    width: 100vw;
+    justify-content: center; /* Alinhar cards à esquerda na tela menor */
+  }
+
+  .arrow {
+    cursor: default; /* Remover cursor grab dos botões de seta em dispositivos móveis */
+  }
+}
