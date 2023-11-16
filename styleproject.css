@@ -7,18 +7,6 @@ body {
   overflow: hidden; /* Removendo a barra de rolagem */
 }
 
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  user-select: none;
-}
-
 .cards-container {
   overflow: none;
   position: sticky;
@@ -30,7 +18,7 @@ body {
 
 .slick-slider {
   display: flex;
-  width: 100vw;
+  width: 90vw;
   max-width: 1000px;
   margin: 0 auto;
   transition: transform 0.9s ease-out;
@@ -38,25 +26,27 @@ body {
 }
 
 .icon-cards__item {
-  flex: 0 0 calc(50% - -16px);
-  height: 500px;
+  flex: 0 0 calc(20% - 16px); /* Ajuste a largura para 12.5% para exibir oito cards */
+  height: 400px;
   background-color: #333;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin: 27px;
   font-size: 2rem;
   transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
+  z-index: 1; /* Garante que os cards estejam na mesma camada inicialmente */
 }
 
 .icon-cards__item.active {
   transform: scale(1) translateY(-50%) translateX(-50%);
   position: center;
-  z-index: 2;
+  z-index: 2; /* Coloca o card ativo na frente dos outros */
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
 .icon-cards__item:not(.active):hover {
   transform: scale(1.2);
+  z-index: 2; /* Coloca o card sobreposto à frente dos outros ao passar o mouse */
 }
 
 /* Estilos para dispositivos menores (mobile) */
