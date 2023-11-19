@@ -58,8 +58,8 @@ body {
   }
 
   .icon-cards__item {
-    flex: 0 0 calc(33.33% - 20px); /* Ajuste a largura para ocupar 33.33% da largura do contêiner */
-    max-width: calc(33.33% - 20px); /* Define a largura máxima para 33.33% com margens */
+    flex: 0 0 calc(12.4% - 20px); /* Ajuste a largura para ocupar 100% da largura do contêiner */
+    max-width: calc(20% - 20px); /* Define a largura máxima para 20% com margens */
   }
 
   .icon-cards__item {
@@ -74,11 +74,27 @@ body {
   }
 
   .icon-cards__item {
-    flex: 0 0 calc(33.33% - 20px); /* Ajuste a largura para ocupar 33.33% da largura do contêiner */
-    max-width: calc(33.33% - 20px); /* Define a largura máxima para 33.33% com margens */
+    flex: 0 0 calc(20% - 20px); /* Ajuste a largura para ocupar 100% da largura do contêiner */
+    max-width: calc(20% - 20px); /* Define a largura máxima para 20% com margens */
   }
 
   .icon-cards__item {
     font-size: 1.0rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .slick-slider {
+    width: 100vw;
+    justify-content: flex-start; /* Alinhar cards à esquerda na tela menor */
+  }
+
+  .icon-cards__item {
+    flex: 0 0 calc(20% - 20px); /* Ajuste a largura para ocupar 100% da largura do contêiner */
+    max-width: calc(20% - 20px); /* Define a largura máxima para 20% com margens */
+  }
+
+  .icon-cards__item {
+    font-size: 0.8rem;
   }
 }
