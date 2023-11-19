@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
   arrowLeft.addEventListener('click', () => rotateSlider(-1));
   arrowRight.addEventListener('click', () => rotateSlider(1));
 
+  // Evento de redimensionamento para atualizar o carrossel quando a largura da janela for alterada
+  window.addEventListener('resize', debounce(updateSliderPosition, 200)); // Use debounce para evitar chamadas excessivas durante o redimensionamento
+
   // Inicializar o carrossel centralizando o card 1
   updateSliderPosition();
 });
@@ -39,9 +42,34 @@ function rotateSlider(offset) {
 }
 
 function updateSliderPosition() {
+  const slider = document.getElementById('slickSlider'); // Adicionado para garantir a referência correta ao elemento slider
   const cardWidth = slider.firstElementChild.offsetWidth;
   const containerWidth = slider.offsetWidth;
-  const translateValue = -(currentIndex % numCards) * (cardWidth / 2) + (containerWidth / 2 - cardWidth / 2);
-  slider.style.transition = 'transform 0.6s ease-out'; // Adiciona uma transição suave
+  const numVisibleCards = Math.floor(containerWidth / cardWidth); // Calcula o número de cards visíveis
+
+  const totalWidth = numCards * cardWidth;
+  let translateValue = -currentIndex * (cardWidth / numVisibleCards) + (containerWidth - cardWidth) / 2;
+
+  // Ajuste para garantir que todos os cards estejam visíveis em resoluções menores
+  if (containerWidth < totalWidth) {
+    slider.style.transition = 'none'; // Remover a transição para evitar problemas de animação
+    translateValue = 0;
+  } else {
+    slider.style.transition = 'transform 0.6s ease-out'; // Adiciona uma transição suave
+  }
+
   slider.style.transform = `translateX(${translateValue}px)`;
+}
+
+// Função de debounce para controlar a frequência das chamadas de redimensionamento
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction() {
+    const later = () => {
+      clearTimeout(timeout);
+      func();
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }

@@ -26,7 +26,8 @@ body {
 }
 
 .icon-cards__item {
-  flex: 0 0 calc(20% - 16px); /* Ajuste a largura para 12.5% para exibir oito cards */
+  flex: 0 0 calc(100% - 20px); /* Ajuste a largura para ocupar 100% da largura do contêiner */
+  max-width: calc(20% - 20px); /* Define a largura máxima para 20% com margens */
   height: 400px;
   background-color: #333;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
@@ -53,10 +54,31 @@ body {
 @media only screen and (max-width: 1337px) {
   .slick-slider {
     width: 100vw;
-    justify-content: center; /* Alinhar cards à esquerda na tela menor */
+    justify-content: flex-start; /* Alinhar cards à esquerda na tela menor */
   }
 
-  .arrow {
-    cursor: default; /* Remover cursor grab dos botões de seta em dispositivos móveis */
+  .icon-cards__item {
+    flex: 0 0 calc(33.33% - 20px); /* Ajuste a largura para ocupar 33.33% da largura do contêiner */
+    max-width: calc(33.33% - 20px); /* Define a largura máxima para 33.33% com margens */
+  }
+
+  .icon-cards__item {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .slick-slider {
+    width: 100vw;
+    justify-content: flex-start; /* Alinhar cards à esquerda na tela menor */
+  }
+
+  .icon-cards__item {
+    flex: 0 0 calc(33.33% - 20px); /* Ajuste a largura para ocupar 33.33% da largura do contêiner */
+    max-width: calc(33.33% - 20px); /* Define a largura máxima para 33.33% com margens */
+  }
+
+  .icon-cards__item {
+    font-size: 1.0rem;
   }
 }
